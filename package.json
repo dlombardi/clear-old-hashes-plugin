@@ -1,0 +1,42 @@
+{
+  "name": "clear-old-hashes-plugin",
+  "version": "1.0.0",
+  "description": "A webpack plugin that will clear output folder of old hashed bundles. Intended for a development environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava test/tests.js",
+    "test:watch": "npm run test -- --watch",
+    "test-travis": "istanbul cover ava ./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlombardi/clear-old-hashes-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "node",
+    "clear",
+    "output"
+  ],
+  "author": "Darien Lombardi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlombardi/clear-old-hashes-plugin"
+  },
+  "homepage": "https://github.com/dlombardi/clear-old-hashes-plugin#readme",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "coveralls": "^2.11.15",
+    "istanbul": "^0.4.5",
+    "lodash": "^4.17.4",
+    "rewire": "^2.5.2",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "del": "^2.2.2"
+  }
+}

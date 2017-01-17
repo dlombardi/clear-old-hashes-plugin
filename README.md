@@ -24,7 +24,7 @@ module.exports = {
     filename: '[id].bundle.[chunkhash].js'
   },
   plugins: [
-    new CleanOldHashesPlugin({delimiter: '.'})
+    new ClearOldHashesPlugin({delimiter: '.'})
   ]
 }
 

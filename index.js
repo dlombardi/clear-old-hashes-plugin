@@ -31,7 +31,6 @@ function ClearOldHashesPlugin(options) {
 
 ClearOldHashesPlugin.prototype.apply = function(compiler){
     var _this = this;
-    var webpackDir = path.dirname(module.parent.filename);
     var filenameDelimited = compiler.options.output.filename.split(_this.options.delimiter);
     var entryNames = Object.keys(compiler.options.entry);
     var outputPath = compiler.options.output.path;
@@ -69,8 +68,11 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
               `${outputPath}/${deleteGlobString}`,
               `!${outputPath}`,
               `!${outputPath}/${excludeGlobString}`,
-            ]).then(function(paths){
+            ]).then(function(paths) {
               resolve();
+            }).catch(function(err) {
+              console.log(err);
+              reject(err);
             })
           });
           deletePromiseArray.push(deletePromise);
@@ -78,6 +80,8 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
 
         Promise.all(deletePromiseArray).then(function(){
           console.log('\x1b[36m%s\x1b[0m', 'CleanWebpackPlugin: old hashes cleared');
+        }).catch(function(err) {
+          throw err;
         })
 
         callback();

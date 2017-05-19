@@ -71,7 +71,7 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
             ]).then(function(paths) {
               resolve();
             }).catch(function(err) {
-              console.log(err);
+              console.warn(err.message);
               reject(err);
             })
           });
@@ -81,11 +81,15 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
         Promise.all(deletePromiseArray).then(function(){
           console.log('\x1b[36m%s\x1b[0m', 'CleanWebpackPlugin: old hashes cleared');
         }).catch(function(err) {
+          console.warn(err.message);
           throw err;
         })
 
         callback();
       });
+    } else {
+      console.error('Delimited output filename not provided.');
+      throw new Error('Delimited output filename not provided.');
     }
 };
 

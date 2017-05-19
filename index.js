@@ -5,26 +5,14 @@ var del = require('del');
 var fs = require('fs');
 
 function ClearOldHashesPlugin(options) {
-  //backwards compatibility
+
+    options = options || {};
+
     if(!options.delimiter){
       console.warn("\x1b[31m", "CleanWebpackPlugin error: bundle name delimiter required in config. Filenames must be delimited by a symbol including but not limited to : '.' or '-'");
       console.warn("\x1b[0m");
     }
-
-    options = options || {};
-
-    if (options.verbose === undefined) {
-      if (process.env.NODE_ENV === 'test') {
-        options.verbose = false;
-      } else {
-        options.verbose = true;
-      }
-    }
-
-    if (options.dry === undefined) {
-      options.dry = false;
-    }
-    // store paths and options
+    // store options
     this.options = options;
 };
 

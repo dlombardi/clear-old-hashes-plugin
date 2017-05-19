@@ -71,7 +71,6 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
             ]).then(function(paths) {
               resolve();
             }).catch(function(err) {
-              console.warn(err.message);
               reject(err);
             })
           });
@@ -82,7 +81,6 @@ ClearOldHashesPlugin.prototype.apply = function(compiler){
           console.log('\x1b[36m%s\x1b[0m', 'CleanWebpackPlugin: old hashes cleared');
         }).catch(function(err) {
           console.warn(err.message);
-          throw err;
         })
 
         callback();
